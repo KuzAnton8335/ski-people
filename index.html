@@ -9,6 +9,9 @@
   <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
   <link rel="manifest" href="/favicons/manifest.webmanifest" />
   <title>Ski people</title>
+  <link rel="preload" href="/public/fonts/OpenSans-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/public/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/public/fonts/Inter-Black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <script type="module" src="/src/main.js"></script>
 </head>
 
@@ -21,7 +24,7 @@
           <img src="/Icons/logo.svg" alt="Логотип - Ski-people" class="header__logo-images">
         </a>
         <form action="#" class="header__search">
-          <input type="search" name="search" class="header__search-input">
+          <input type="search" name="search" class="header__search-input" placeholder="Введите запрос">
           <button class="header__search-button" type="submit">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -374,6 +377,7 @@
       <div class="container">
         <h2 class="cart__title">Корзина</h2>
         <ul class="cart__list">
+
           <li class="cart__item">
             <img src="/Images/ski-mini-1.jpg" alt="" class="cart__item-image">
             <h3 class="cart__item-title">Горные лыжи</h3>
@@ -408,14 +412,53 @@
             </div>
           </li>
         </ul>
+        <div class="cart__order">
+          <h3 class="cart__order-title">Оформление</h3>
+          <div class="cart__order-info">
+            <p class="cart__order_count">
+              <span>4</span>
+              товара на сумму:
+            <p class="cart__order-price">20&nbsp;000&nbsp;₽</p>
+            </p>
+          </div>
+        </div>
+        <p class="cart__order-develery">Доставка 0&nbsp;₽</p>
+        <button class="cart__order-button" type="submit" form="cartForm">Оформить заказ</button>
+        <form action="#" class="cart__form" id="cartForm" method="POST">
+          <h3 class="cart__form-title">Данные для доставки</h3>
+          <fieldset class="cart__form-inputs">
+            <input type="text" placeholder="Фамилия Имя Отчество" class="cart__form-input" name="name">
+            <input type="email" name="email" id="" placeholder="Email" class="cart__form-input">
+            <input type="tel" placeholder="Телефон" class="cart__form-input" name="tel">
+            <input type="text" placeholder="Адрес доставки" class="cart__form-input" name="address">
+            <textarea name="comment" id="comment" placeholder="Комментарий к заказу"> </textarea>
+          </fieldset>
+          <fieldset class="cart__form-fieldset">
+            <legend class="cart__form-legend">Доставка</legend>
+            <label class="cart__form-label">
+              <input type="checkbox" class="cart__form-radio" value="delivery" name="delivery">
+              Доставка
+              <input type="checkbox" class="cart__form-radio" value="pickup" name="delivery">
+              Самовывоз
+            </label>
+            <legend class="cart__form-legend">Оплата</legend>
+            <label class="cart__form-label">
+              <input type="checkbox" class="cart__form-radio" value="card" name="payment">
+              Картой при получении
+              <input type="checkbox" class="cart__form-radio" value="cash" name="payment">
+              Наличными при получении
+            </label>
+          </fieldset>
+        </form>
       </div>
     </section>
   </main>
   <!-- footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container footer__container">
       <a href="/" class="footer__logo-link">
-        <svg width="164" height="35" viewBox="0 0 164 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="164" height="35" viewBox="0 0 164 35" fill="none" xmlns="http://www.w3.org/2000/svg"
+          class="footer__logo-icon">
           <path
             d="M158.688 26.3345C157.466 26.3345 156.409 26.0525 155.516 25.4883C154.624 24.9185 153.933 24.1315 153.444 23.1273C152.961 22.1175 152.719 20.9553 152.719 19.6409C152.719 18.332 152.961 17.1699 153.444 16.1544C153.933 15.1333 154.607 14.335 155.465 13.7596C156.329 13.1785 157.327 12.888 158.458 12.888C159.168 12.888 159.853 13.0177 160.513 13.2772C161.172 13.5311 161.764 13.9232 162.287 14.4535C162.815 14.9782 163.233 15.641 163.54 16.4421C163.847 17.2376 164 18.1797 164 19.2685V20.0132H153.768V18.6846H162.449C162.449 17.8497 162.278 17.0994 161.937 16.4337C161.602 15.7623 161.133 15.232 160.53 14.8428C159.933 14.4535 159.242 14.2589 158.458 14.2589C157.628 14.2589 156.897 14.4789 156.266 14.9189C155.635 15.359 155.141 15.94 154.783 16.6621C154.43 17.3843 154.251 18.1741 154.246 19.0316V19.827C154.246 20.8594 154.425 21.7621 154.783 22.535C155.147 23.3022 155.661 23.8974 156.326 24.3205C156.991 24.7436 157.779 24.9552 158.688 24.9552C159.308 24.9552 159.851 24.8593 160.317 24.6675C160.789 24.4757 161.184 24.219 161.502 23.8974C161.826 23.5702 162.071 23.212 162.235 22.8227L163.676 23.2881C163.477 23.8353 163.151 24.3403 162.696 24.8029C162.247 25.2655 161.684 25.6378 161.007 25.9199C160.337 26.1963 159.564 26.3345 158.688 26.3345Z"
             fill="currentColor" />
