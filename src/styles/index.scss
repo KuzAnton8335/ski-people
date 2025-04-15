@@ -1,2 +1,4 @@
-@use "./modules/header.scss";
-@use "./modules/footer.scss";
+@use "./modules/header.scss" as *;
+@use "./modules/catalog.scss" as *;
+@use "./modules/bredcrumnd.scss" as *;
+@use "./modules/footer.scss" as *;
